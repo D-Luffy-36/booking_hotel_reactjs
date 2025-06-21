@@ -1,9 +1,10 @@
 import React from "react";
 import Navbar from "./conponents/Navbar";
-import { useLocation } from "react-router-dom";
-import HeroSection from "./sections/HeroSection.jsx";
-import FurtureSection from "./sections/FutureSection.jsx";
+import { Route, Routes, useLocation } from "react-router-dom";
+import HeroSection from "./sections/home/HeroSection.jsx";
+import FurtureSection from "./sections/home/FutureSection.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import Footer from "./sections/home/Footer.jsx";
 
 
 const App = () => {
@@ -13,7 +14,12 @@ const App = () => {
   return (
     <div>
       {!isOwnerPath && <Navbar />}
-      <HomePage />
+      <div className="min-h-[70-vh]">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+        <Footer />
+      </div>
 
     </div>
   );

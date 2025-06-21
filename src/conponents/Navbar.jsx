@@ -21,7 +21,7 @@ const Navbar = () => {
 
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500
-            ${isScrolled ? "bg-white/80 shadow-md backdrop-blur-lg py-3 md:py-4 text-gray-700" : "bg-indigo-500 py-4 md:py-6 text-white"}`}>
+            ${isScrolled ? "bg-white/80 shadow-md backdrop-blur-lg py-3 md:py-4 text-gray-700" : "py-4 md:py-6 text-white"}`}>
 
             {/* Wrapper */}
             <div className="flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32">

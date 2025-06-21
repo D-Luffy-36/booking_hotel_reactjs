@@ -1,9 +1,9 @@
-import HeroSection from "../sections/HeroSection";
-import FurtureSection from "../sections/FutureSection";
-import OfferSection from "../sections/OfferSection";
-import TestimonialSection from "../sections/TestimonialSection";
-import Footer from "../sections/Footer";
-import StayInspiredSection from "../sections/StayInspired";
+import HeroSection from "../sections/home/HeroSection";
+import FurtureSection from "../sections/home/FutureSection";
+import OfferSection from "../sections/home/OfferSection";
+import TestimonialSection from "../sections/home/TestimonialSection";
+import Footer from "../sections/home/Footer";
+import StayInspiredSection from "../sections/home/StayInspired";
 
 
 export default function HomePage() {
@@ -14,7 +14,6 @@ export default function HomePage() {
             <OfferSection />
             <TestimonialSection />
             <StayInspiredSection />
-            <Footer />
         </>
     );
 }
