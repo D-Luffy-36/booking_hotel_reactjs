@@ -23,7 +23,7 @@ export default function HeroSection() {
 
                 <form action="">
                     <div className="bg-white/80 backdrop-blur-md p-4 rounded-xl flex flex-col md:flex-row  gap-4 w-full max-w-4xl text-black shadow-lg">
-                        <div className="flex flex-col">
+                        <div className="flex flex-col flex-1">
                             <div className="flex items-center gap-1.5">
                                 <img src={assets.locationIcon} alt="destination" className="w-[11px] h-[15px]" />
                                 <label htmlFor="destination-input">Destination</label>
@@ -43,7 +43,7 @@ export default function HeroSection() {
                         </div>
 
                         {/* Check in */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col flex-1">
                             <div className="flex items-center gap-1.5">
                                 <img src={assets.calenderIcon} alt="check-in" className="w-[11px] h-[15px]" />
                                 <label htmlFor="check-in-input">Check in</label>
@@ -58,7 +58,7 @@ export default function HeroSection() {
                         </div>
 
                         {/* Check out */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col flex-1">
                             <div className="flex items-center gap-1.5">
                                 <img src={assets.calenderIcon} alt="check-in" className="w-[11px] h-[15px]" />
                                 <label htmlFor="check-in-input">Check out</label>
@@ -73,7 +73,7 @@ export default function HeroSection() {
                         </div>
 
                         {/* Guests */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col flex-1">
                             <label htmlFor="guest">Guest</label>
                             <InputWithIcon
                                 id="guest"

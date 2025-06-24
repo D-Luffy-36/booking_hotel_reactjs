@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets.js";
 import React from 'react';
@@ -20,8 +21,8 @@ const Navbar = () => {
         { name: 'About', path: '/about' },
     ];
 
-    const [isScrolled, setIsScrolled] = React.useState(false);
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const { openSignIn } = useClerk();
     const { user } = useUser();
@@ -30,11 +31,16 @@ const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation()
 
-    React.useEffect(() => {
+    useEffect(() => {
+        // Kiểm tra đường dẫn hiện tại (pathname):
+        // Nếu pathname khác '/' (home page) => set isScrolled thành true (coi như user đã "cuộn" sang page khác).
+        // Nếu pathname là '/' => set isScrolled thành false (vẫn ở home page, chưa cuộn đi đâu).
+        setIsScrolled(location.pathname !== '/');
+
         const handleScroll = () => setIsScrolled(window.scrollY > 10);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [location.pathname]);
 
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500
@@ -92,7 +98,6 @@ const Navbar = () => {
                             Login
                         </button>
                     }
-
                 </div>
 
                 {/* Mobile Menu Button */}
