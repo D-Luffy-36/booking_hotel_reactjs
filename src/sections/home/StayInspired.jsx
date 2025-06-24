@@ -1,6 +1,6 @@
 export default function StayInspiredSection() {
     return (
-        <section className="bg-[#0D1B2A] text-white px-6 py-10 md:px-12 lg:px-20 rounded-2xl mx-auto max-w-3xl text-center my-14 shadow-lg">
+        <section className="bg-[#0D1B2A] text-white px-6 py-10 md:px-12 lg:px-20 rounded-2xl mx-auto max-w-3xl text-center my-30 shadow-lg">
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Stay Inspired</h2>
             <p className="mb-6 text-sm md:text-base leading-relaxed text-gray-300">
                 Join our newsletter and be the first to discover new destinations, exclusive offers, and travel inspiration.

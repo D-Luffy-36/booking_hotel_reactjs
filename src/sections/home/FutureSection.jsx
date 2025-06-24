@@ -27,10 +27,11 @@ export default function FurtureSection() {
             </div>
 
             {/* View All Hotels Button */}
-            <div className="mt-10 mb-10 flex justify-center">
-                <button className="border border-gray-400 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-100 transition">
+            <div className="mt-20 mb-10 flex justify-center">
+                <button className="border border-gray-400 text-gray-700 font-medium px-8 py-3 rounded-full hover:bg-blue-500 hover:text-white transition duration-300 shadow-md">
                     View All Hotels
                 </button>
+
             </div>
 
         </div>
