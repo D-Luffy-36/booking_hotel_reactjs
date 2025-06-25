@@ -35,7 +35,7 @@ const Navbar = () => {
         // Kiểm tra đường dẫn hiện tại (pathname):
         // Nếu pathname khác '/' (home page) => set isScrolled thành true (coi như user đã "cuộn" sang page khác).
         // Nếu pathname là '/' => set isScrolled thành false (vẫn ở home page, chưa cuộn đi đâu).
-        setIsScrolled(location.pathname !== '/');
+        setIsScrolled(() => location.pathname !== '/');
 
         const handleScroll = () => setIsScrolled(window.scrollY > 10);
         window.addEventListener("scroll", handleScroll);
