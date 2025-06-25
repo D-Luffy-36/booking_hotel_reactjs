@@ -23,15 +23,13 @@ export default function FurtureSection() {
 
 
             {/* Hotel Cards */}
-            <div className="flex items-center justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-8 w-full ">
-                    {roomsDummyData.slice(0, 4).map((room) => {
-                        return (
-                            <RoomCard key={room._id} room={room} />
-                        );
-                    })}
-                </div>
+
+            <div className="flex flex-wrap items-center md:flex-row gap-4 justify-center mb-16">
+                {roomsDummyData.slice(0, 4).map((room) => (
+                    <RoomCard key={room._id} room={room} />
+                ))}
             </div>
+
 
             {/* View All Hotels Button */}
             <div className="mt-20 mb-10 flex justify-center">

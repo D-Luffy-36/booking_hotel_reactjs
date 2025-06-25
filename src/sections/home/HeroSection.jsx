@@ -22,7 +22,7 @@ export default function HeroSection() {
                 </div>
 
                 <form action="">
-                    <div className="bg-white/80 backdrop-blur-md p-4 rounded-xl flex flex-col md:flex-row  gap-4 w-full max-w-4xl text-black shadow-lg">
+                    <div className="bg-white/80 backdrop-blur-md p-4 rounded-xl flex flex-wrap justify-between gap-4 w-full max-w-6xl mx-auto items-center text-gray-500">
                         <div className="flex flex-col flex-1">
                             <div className="flex items-center gap-1.5">
                                 <img src={assets.locationIcon} alt="destination" className="w-[11px] h-[15px]" />
@@ -83,7 +83,7 @@ export default function HeroSection() {
                         </div>
 
                         {/* Search Button */}
-                        <button className="w-full md:w-auto bg-gradient-to-r from-blue-600 to-blue-400 text-white px-6 py-3 rounded-lg hover:from-blue-700 hover:to-blue-500 transition-all duration-300 shadow-md">
+                        <button className="w-full  bg-gradient-to-r from-blue-600 to-blue-400 text-white px-6 py-3 rounded-lg hover:from-blue-700 hover:to-blue-500 transition-all duration-300 shadow-md">
                             Search
                         </button>
                     </div>

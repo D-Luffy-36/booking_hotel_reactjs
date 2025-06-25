@@ -26,7 +26,7 @@ export default function OfferSection() {
             </div>
 
             {/* Offer Cards */}
-            <div className="flex flex-col items-center md:flex-row gap-4 justify-center mb-16">
+            <div className="flex flex-wrap items-center md:flex-row gap-4 justify-center mb-16">
                 {exclusiveOffers.map((offer) => (
                     <OfferCard key={offer._id} offer={offer} />
                 ))}

@@ -2,7 +2,8 @@ import React from 'react';
 
 export default function OfferCard({ offer }) {
     return (
-        <div className="relative w-[300px] h-[200px] rounded-xl overflow-hidden shadow-md flex flex-col justify-between">
+        <div className="relative w-[300px] h-[200px] rounded-xl shadow-md gap-6
+         overflow-hidden  flex flex-wrap flex-col justify-between hover:scale-110 transform duration-300">
 
             {/* Ảnh nền full cover */}
             <img
