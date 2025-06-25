@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import PageWrapper from "./PageWrapper";
-import RoomHeader from "../sections/roomDetail/RoomHeader"
+import PageWrapper from "../../conponents/layout/PageWrapper";
+import RoomHeader from "./sections/RoomHeader"
 
 
 export default function RoomDetailPage({ rooms }) {

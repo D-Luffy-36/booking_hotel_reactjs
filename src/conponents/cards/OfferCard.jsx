@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function OfferCard({ offer }) {
     return (
         <div className="relative w-[300px] h-[200px] rounded-xl shadow-md gap-6
-         overflow-hidden  flex flex-wrap flex-col justify-between hover:scale-110 transform duration-300">
+        overflow-hidden flex flex-wrap flex-col justify-between active:scale-105 hover:z-50
+        md:hover:scale-110 transform duration-300 z-10 will-change-transform cursor-pointer">
 
             {/* Ảnh nền full cover */}
             <img
@@ -27,9 +29,10 @@ export default function OfferCard({ offer }) {
                 </div>
 
                 {/* Nút dưới cùng */}
-                <button className="text-sm text-white font-medium flex items-center gap-1">
+                <Link key={offer._id} to={`offer/${offer._id}`}
+                    className="text-sm text-white font-medium flex items-center gap-1">
                     View Offers <span>&rarr;</span>
-                </button>
+                </Link>
             </div>
         </div>
     );

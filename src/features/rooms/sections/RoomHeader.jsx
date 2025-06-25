@@ -1,6 +1,6 @@
-// Tiêu đề, đánh giá, địa điểm(title, review, location)
-
-import { assets } from "../../assets/assets";
+// Tiêu đề, đánh giá, địa điểm(title, review, location
+import { assets } from "../../../assets/assets";
+import StarRating from "../../../conponents/ui/StarRating";
 
 export default function RoomHeader({ room }) {
     if (!room || !room.hotel) {
@@ -8,8 +8,8 @@ export default function RoomHeader({ room }) {
             <div>no data of room</div>
         )
     };
-
     const { hotel } = room;
+
     return (
         <div className="flex flex-col justify-start bg-amber-700 m-5">
             <div className="flex items-center gap-4">
@@ -25,6 +25,12 @@ export default function RoomHeader({ room }) {
                     20% OFF
                 </div>
             </div>
+
+            <div className="flex gap-2 mb-2">
+                <StarRating rating={room.hotel.rating} />
+                <p>200+ reviews</p>
+            </div>
+
 
             <div className="flex items-center gap-1 text-base font-outfit text-[#6B7280E3]">
                 <img src={assets.locationIcon} alt="location" />

@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "./conponents/Navbar";
+import Navbar from "./conponents/layout/Navbar.jsx"
 import { Route, Routes, useLocation } from "react-router-dom";
-import HeroSection from "./sections/home/HeroSection.jsx";
-import FurtureSection from "./sections/home/FutureSection.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import RoomDetailPage from "./pages/RoomDetailPage.jsx";
-import Footer from "./sections/home/Footer.jsx";
-import { roomsDummyData } from "./assets/assets.js";
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+import HomePage from "./features/home/HomePage.jsx"
+import RoomDetailPage from "./features/rooms/RoomDetailPage.jsx"
+import AllRooms from './features/rooms/AllRooms.jsx'
+import Footer from "./conponents/layout/Footer.jsx";
+import { roomsDummyData } from "./assets/assets.js"
+
+
 
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
       <div className="min-h-[70-vh]">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/rooms" element={<AllRooms />} />
           <Route path="/room/:id" element={<RoomDetailPage rooms={roomsDummyData} />} />
           <Route path="/my-bookings" element={<HomePage />} />
         </Routes>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { assets } from "../assets/assets.js";
+import { assets } from "../../assets/assets.js";
 import React from 'react';
 import { SignInButton, UserButton, useClerk, useUser } from '@clerk/clerk-react';
 
