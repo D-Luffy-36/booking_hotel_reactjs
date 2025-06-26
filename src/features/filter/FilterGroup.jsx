@@ -1,4 +1,7 @@
-import { RoomTypeFilter, RatingFilter, LocationFilter } from "./filter"
+import {
+    RoomTypeFilter, RatingFilter, PriceRangeFilter,
+    LocationFilter, DateRangeFilter
+} from "./filter"
 import { cities } from "../../assets/assets"
 
 export default function FilterGroup({ filters, onChange, onClear }) {
@@ -29,7 +32,6 @@ export default function FilterGroup({ filters, onChange, onClear }) {
                 onChange={() => { }}
             />
 
-
             {/* Bộ lọc vị trí */}
             <LocationFilter
                 title="Location"
@@ -37,27 +39,14 @@ export default function FilterGroup({ filters, onChange, onClear }) {
                 onChange={() => { }}
             />
 
-
-            {/* Ngày nhận/trả phòng */}
-            <div className="mb-4">
-                <h3 className="font-medium text-sm md:text-lg mb-2">Ngày nhận/trả phòng</h3>
-                <div className="flex flex-col gap-2">
-                    <input
-                        type="date"
-                        className="w-full p-2 border rounded-lg text-sm md:text-base"
-                        placeholder="Ngày nhận phòng"
-                    />
-                    <input
-                        type="date"
-                        className="w-full p-2 border rounded-lg text-sm md:text-base"
-                        placeholder="Ngày trả phòng"
-                    />
-                </div>
-            </div>
-
+            {/* bộ lọc theo khoảng time */}
+            <DateRangeFilter
+                title="Check in / Check out"
+                onDateChange={() => { }}
+            />
 
             {/* Số lượng khách */}
-            <div className="mb-4">
+            {/* <div className="mb-4">
                 <h3 className="font-medium text-sm md:text-lg mb-2">Số lượng khách</h3>
                 <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2">
@@ -79,10 +68,10 @@ export default function FilterGroup({ filters, onChange, onClear }) {
                         />
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Price filter */}
-            <div className="mb-4">
+            {/* <div className="mb-4">
                 <h3 className="font-medium text-sm md:text-lg mb-2">Price</h3>
                 {[
                     { label: "$100 to $200", min: 100, max: 200 },
@@ -100,7 +89,17 @@ export default function FilterGroup({ filters, onChange, onClear }) {
                         {range.label}
                     </label>
                 ))}
-            </div>
+            </div> */}
+
+            <PriceRangeFilter
+                title="Price"
+                items={[
+                    { label: "$100 to $200", min: 100, max: 200 },
+                    { label: "$200 to $300", min: 200, max: 300 },
+                    { label: "$300 to $600", min: 300, max: 600 },
+                ]}
+                onChange={() => { }}
+            />
 
 
             {/* Bộ lọc tiện ích */}
