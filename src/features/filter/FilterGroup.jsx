@@ -1,4 +1,5 @@
-import { RoomTypeFilter, RatingFilter } from "./filter"
+import { RoomTypeFilter, RatingFilter, LocationFilter } from "./filter"
+import { cities } from "../../assets/assets"
 
 export default function FilterGroup({ filters, onChange, onClear }) {
     return (<>
@@ -18,32 +19,23 @@ export default function FilterGroup({ filters, onChange, onClear }) {
             <RoomTypeFilter
                 title="Popular filters"
                 roomTypes={["Single Bed", "Family Suite", "Double Bed", "Luxury Room"]}
-                onChange={onChange}
+                onChange={() => { }}
             />
 
             {/* Bộ lọc đánh giá */}
             <RatingFilter
                 title="Review Filter"
                 items={[3, 4, 5].map((star) => ({ label: `${star} stars or more`, value: star }))}
+                onChange={() => { }}
             />
 
 
             {/* Bộ lọc vị trí */}
-            <div className="mb-4">
-                <h3 className="font-medium text-sm md:text-lg mb-2">Vị trí</h3>
-                {["Hà Nội", "TP.HCM", "Đà Nẵng", "Nha Trang"].map((location) => (
-                    <label
-                        key={location}
-                        className="flex items-center gap-2 mb-2 text-gray-700 text-sm md:text-base"
-                    >
-                        <input
-                            type="checkbox"
-                            className="accent-blue-500 h-4 w-4"
-                        />
-                        {location}
-                    </label>
-                ))}
-            </div>
+            <LocationFilter
+                title="Location"
+                locations={cities}
+                onChange={() => { }}
+            />
 
 
             {/* Ngày nhận/trả phòng */}
