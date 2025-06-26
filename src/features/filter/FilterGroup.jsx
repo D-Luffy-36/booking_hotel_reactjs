@@ -1,4 +1,4 @@
-import { RoomTypeFilter } from "./filter"
+import { RoomTypeFilter, RatingFilter } from "./filter"
 
 export default function FilterGroup({ filters, onChange, onClear }) {
     return (<>
@@ -8,35 +8,24 @@ export default function FilterGroup({ filters, onChange, onClear }) {
                 <h2 className="text-lg md:text-xl font-semibold">FILTERS</h2>
                 <button
                     className="text-sm text-gray-500 hover:text-black transition"
+                    onClick={onClear}
                 >
                     CLEAR
                 </button>
             </div>
 
+            {/* bộ lọc loại phòng */}
             <RoomTypeFilter
                 title="Popular filters"
                 roomTypes={["Single Bed", "Family Suite", "Double Bed", "Luxury Room"]}
                 onChange={onChange}
             />
 
-
-
             {/* Bộ lọc đánh giá */}
-            <div className="mb-4">
-                <h3 className="font-medium text-sm md:text-lg mb-2">Đánh giá</h3>
-                {[3, 4, 5].map((star) => (
-                    <label
-                        key={star}
-                        className="flex items-center gap-2 mb-2 text-gray-700 text-sm md:text-base"
-                    >
-                        <input
-                            type="checkbox"
-                            className="accent-blue-500 h-4 w-4"
-                        />
-                        {star} stars or more
-                    </label>
-                ))}
-            </div>
+            <RatingFilter
+                title="Review Filter"
+                items={[3, 4, 5].map((star) => ({ label: `${star} stars or more`, value: star }))}
+            />
 
 
             {/* Bộ lọc vị trí */}
