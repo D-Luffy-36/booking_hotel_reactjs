@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import PageWrapper from "../../conponents/layout/PageWrapper"
 import { roomsDummyData } from "../../assets/assets";
@@ -39,7 +38,7 @@ export default function AllRooms() {
                         </div>
                     ))}
                 </div>
-                <FilterGroup />
+                <FilterGroup filters={filters} />
             </div>
 
 

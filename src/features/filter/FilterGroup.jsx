@@ -4,6 +4,7 @@ import {
 } from "./filter"
 import { cities } from "../../assets/assets"
 
+// lọc theo nhiều tiêu chí
 export default function FilterGroup({ filters, onChange, onClear }) {
     return (<>
         <div className="w-full md:w-[280px] lg:w-[300px] bg-[#F9F9F9] h-auto  p-4 md:p-6 border rounded-lg shadow-sm">
@@ -40,13 +41,16 @@ export default function FilterGroup({ filters, onChange, onClear }) {
             />
 
             {/* bộ lọc theo khoảng time */}
+            {/* ❌ BUG: Cannot read properties of undefined (reading 'checkIn')*/}
             <DateRangeFilter
                 title="Check in / Check out"
+                checkInDate={filters.checkIn}
+                checkOutDate={filters.checkOut}
                 onDateChange={() => { }}
             />
 
             {/* Số lượng khách */}
-            {/* <div className="mb-4">
+            <div className="mb-4">
                 <h3 className="font-medium text-sm md:text-lg mb-2">Số lượng khách</h3>
                 <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2">
@@ -68,29 +72,9 @@ export default function FilterGroup({ filters, onChange, onClear }) {
                         />
                     </div>
                 </div>
-            </div> */}
+            </div>
 
             {/* Price filter */}
-            {/* <div className="mb-4">
-                <h3 className="font-medium text-sm md:text-lg mb-2">Price</h3>
-                {[
-                    { label: "$100 to $200", min: 100, max: 200 },
-                    { label: "$200 to $300", min: 200, max: 300 },
-                    { label: "$300 to $600", min: 300, max: 600 },
-                ].map((range) => (
-                    <label
-                        key={range.label}
-                        className="flex items-center gap-2 mb-2 text-gray-700 text-sm md:text-base"
-                    >
-                        <input
-                            type="checkbox"
-                            className="accent-blue-500 h-4 w-4"
-                        />
-                        {range.label}
-                    </label>
-                ))}
-            </div> */}
-
             <PriceRangeFilter
                 title="Price"
                 items={[
