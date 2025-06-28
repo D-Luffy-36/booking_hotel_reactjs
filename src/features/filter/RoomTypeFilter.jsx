@@ -1,4 +1,3 @@
-
 /*
 ! problem
  selected không đồng bộ với UI
@@ -21,10 +20,29 @@
  * - Xóa label khỏi selected nếu nó đã có.
  */
 export default function RoomTypeFilter({ title, roomTypes, selected = [], onChange }) {
-    // hàm xử lí bỏ tích ấn tích
+    /*
+      * Xử lý khi user click checkbox:
+      * - Nếu label đã tồn tại trong selected => Cha sẽ gỡ ra (bỏ tích)
+      * - Nếu label chưa tồn tại trong selected => Cha sẽ thêm vào (tích)
+      * - Hàm này KHÔNG xử lý logic thêm / xóa mà chỉ gọi callback onChange(label)
+      * - Component cha sẽ quyết định cập nhật lại mảng selected [] mới
+      *
+      * @param {string} label - Tên loại phòng vừa được click
+    */
     const handleCheckboxChange = (label) => {
-        console.log(label);
-        onChange(label);
+        let newRoomTypes = [];
+        // nếu đã tồn tại trong selected thì xóa => lọc tất cả phòng không trùng tên label
+        if (selected.includes(label)) {
+            newRoomTypes = selected.filter((typeRoom) => {
+                return typeRoom !== label
+            });
+        }
+        else {
+            newRoomTypes = [...selected, label];
+        }
+
+        // ngược lại thì gọi lên cha cho vào filter => update lại selected
+        onChange(newRoomTypes);
     }
 
     console.log("selected type: ", selected)
@@ -46,7 +64,7 @@ export default function RoomTypeFilter({ title, roomTypes, selected = [], onChan
                         <input
                             type="checkbox"
                             className="accent-blue-500 h-4 w-4"
-                            checked={true}
+                            checked={selected.includes(label)} // dynamic update
                             onChange={() => handleCheckboxChange(label)}
                         />
                         {label}

@@ -23,7 +23,17 @@ export default function FilterGroup({ filters, onChange, onClear }) {
             <RoomTypeFilter
                 title="Room Type"
                 roomTypes={["Single Bed", "Family Suite", "Double Bed", "Luxury Room"]}
-                selected={filters.roomTypes} // ví dụ: ["Single Bed"]
+                selected={filters.roomTypes} // ✅ Mảng các loại phòng đã chọn, truyền từ filters gốc
+                /**
+                 * ✅ Khi RoomTypeFilter gọi onChange(roomTypes):
+                 *    - `roomTypes` lúc này chỉ là MẢNG ["Single Bed", "Luxury Room", ...]
+                 * ✅ Ta GÓI nó lại thành 1 OBJECT { roomTypes: [...] }
+                 *    - Để phù hợp với filters gốc: { roomTypes, priceRanges, ... }
+                 * ✅ Sau đó AllRooms merge { roomTypes: [...] } vào filters bằng spread:
+                 *    setFilters(prev => ({ ...prev, ...newFilter }))
+                 *
+                 * 👉 Mục đích: Con chỉ bắn dữ liệu thô, cha chịu trách nhiệm format đúng shape.
+                 */
                 onChange={(roomTypes) => onChange({ roomTypes })}
             />
 

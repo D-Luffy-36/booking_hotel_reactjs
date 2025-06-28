@@ -59,7 +59,13 @@ export default function AllRooms() {
                 <FilterGroup
                     filters={filters}
                     onChange={(newFilter) =>
-                        setFilters((prev) => ({ ...prev, ...newFilter }))
+                        setFilters(
+                            (prev) => (
+                                {
+                                    ...prev,
+                                    ...newFilter
+                                }
+                            )) // ! why do you code like this.WTF ??????
                     }
                     onClear={() => setFilters(initialFilters)}
                 />
