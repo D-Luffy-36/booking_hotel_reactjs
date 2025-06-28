@@ -76,6 +76,51 @@ export const assets = {
     heroImage
 }
 
+export const amenities = [
+    // 🛏️ Basic Amenities
+    "Free Wi-Fi",
+    "Air conditioning",
+    "Flat-screen TV",
+    "Refrigerator",
+    "Electric kettle",
+    "Hairdryer",
+    "Work desk",
+    "Housekeeping",
+    "Private bathroom",
+
+    // 🍽️ Dining
+    "Free breakfast",
+    "Restaurant",
+    "Bar",
+    "Room service",
+    "Mini bar",
+    "Coffee maker",
+
+    // 🏊 Recreation & Wellness
+    "Swimming pool",
+    "Infinity pool",
+    "Fitness center",
+    "Spa / Massage",
+    "Sauna",
+    "Hot tub / Jacuzzi",
+
+    // 🚗 Transport & Parking
+    "Parking",
+    "Free parking",
+    "Airport shuttle",
+    "Car rental",
+    "Taxi service",
+
+    // 🧳 Other Services
+    "24-hour front desk",
+    "24-hour security",
+    "Express check-in/out",
+    "Laundry service",
+    "Luggage storage",
+    "Elevator",
+    "Safe deposit box"
+];
+
 export const cities = [
     "Dubai",
     "Singapore",

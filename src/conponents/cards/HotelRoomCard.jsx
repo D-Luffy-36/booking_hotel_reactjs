@@ -3,9 +3,11 @@ import { assets, facilityIcons } from "../../assets/assets";
 import { Link } from "react-router-dom";
 
 export default function HotelRoomCard({ room }) {
-    console.log("room data: ", room)
+
     const { address, city, rating, name } = room.hotel;
     const { amenities, pricePerNight } = room;
+
+    console.log("room data: ", room);
     return (
         <Link to={`/room/${room._id}`} className="flex flex-col md:flex-row my-4 py-4 gap-5 w-full">
             <div className="w-full md:w-[412px] h-[216px] md:h-auto">

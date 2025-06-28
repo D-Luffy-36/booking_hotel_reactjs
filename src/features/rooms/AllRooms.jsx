@@ -4,19 +4,29 @@ import { roomsDummyData } from "../../assets/assets";
 import SectionHeader from "../../conponents/layout/SectionHeader"
 import HotelRoomCard from "../../conponents/cards/HotelRoomCard"
 import { FilterGroup } from "../filter/filter";
-export default function AllRooms() {
+import { filterByRoomType } from "../filter/ultils/index"
 
-    const [filters, setFilters] = useState({
+export default function AllRooms() {
+    const initialFilters = {
         roomTypes: [],
         priceRanges: [],
         amenities: [],
         sortBy: "",
-        minRating: [], // Mảng cho nhiều mức sao
-        location: [], // Mảng cho nhiều vị trí
-        checkIn: null, // Ngày nhận phòng
-        checkOut: null, // Ngày trả phòng
-        guests: { adults: 1, children: 0 }, // Object cho số lượng khách
-    });
+        minRating: [],
+        location: [],
+        checkIn: null,
+        checkOut: null,
+        guests: { adults: 1, children: 0 },
+    };
+
+    const [filters, setFilters] = useState(initialFilters);
+
+    const filterRoom = roomsDummyData.filter((room) => {
+        return filterByRoomType(
+            room, filters.roomTypes
+        );
+    })
+
 
     return (
         <PageWrapper>
@@ -29,16 +39,30 @@ export default function AllRooms() {
                 </p>
             </SectionHeader>
 
-            <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-6">
-                <div className="flex-1">
-                    {roomsDummyData.map((room) => (
+            {/* // TODO: Duyệt qua filteredRooms để hiển thị danh sách phòng đã được lọc theo bộ lọc người dùng */}
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+                {/* Room list */}
+                <div className="flex flex-col space-y-6">
+                    {filterRoom.map((room) => (
                         <div key={room._id}>
                             <HotelRoomCard room={room} />
                             <hr className="my-4 border-t border-gray-300" />
                         </div>
                     ))}
                 </div>
-                <FilterGroup filters={filters} />
+
+                {/* // !BUG: Khi bỏ chọn (bỏ dấu tích) filter, component không tự động re-render danh sách phòng
+                //? Có thể do FilterGroup không gọi đúng setFilters hoặc filters không cập nhật như mong muốn.
+                // TODO: Kiểm tra xem hàm onChange trong <FilterGroup /> có thực sự gọi setFilters với giá trị mới hay không.
+                // * Nếu filters không cập nhật => UI không re-render.
+                //* Gợi ý: Thêm console.log ở setFilters và kiểm tra props truyền vào FilterGroup. */}
+                <FilterGroup
+                    filters={filters}
+                    onChange={(newFilter) =>
+                        setFilters((prev) => ({ ...prev, ...newFilter }))
+                    }
+                    onClear={() => setFilters(initialFilters)}
+                />
             </div>
 
 

@@ -1,129 +1,95 @@
 import {
     RoomTypeFilter, RatingFilter, PriceRangeFilter,
-    LocationFilter, DateRangeFilter
-} from "./filter"
-import { cities } from "../../assets/assets"
+    LocationFilter, DateRangeFilter, AmenitiyFilter,
+    GuestFilter, SortOptionsFilter
+} from "./filter";
+import { cities, amenities } from "../../assets/assets";
 
-// lọc theo nhiều tiêu chí
 export default function FilterGroup({ filters, onChange, onClear }) {
-    return (<>
-        <div className="w-full md:w-[280px] lg:w-[300px] bg-[#F9F9F9] h-auto  p-4 md:p-6 border rounded-lg shadow-sm">
+    return (
+        <aside className="w-full bg-white rounded-xl shadow-md p-4 md:p-6 space-y-6 max-h-[calc(100vh-100px)] overflow-y-auto sticky top-24">
             {/* Header */}
-            <div className="flex justify-between items-center border-b pb-2 mb-4">
-                <h2 className="text-lg md:text-xl font-semibold">FILTERS</h2>
+            <div className="flex justify-between items-center border-b pb-2">
+                <h2 className="text-xl font-semibold">Filters</h2>
                 <button
-                    className="text-sm text-gray-500 hover:text-black transition"
                     onClick={onClear}
+                    className="text-sm text-gray-500 hover:text-black transition"
                 >
-                    CLEAR
+                    Clear
                 </button>
             </div>
 
-            {/* bộ lọc loại phòng */}
+            {/* Group: Room type */}
             <RoomTypeFilter
-                title="Popular filters"
+                title="Room Type"
                 roomTypes={["Single Bed", "Family Suite", "Double Bed", "Luxury Room"]}
-                onChange={() => { }}
+                selected={filters.roomTypes} // ví dụ: ["Single Bed"]
+                onChange={(roomTypes) => onChange({ roomTypes })}
             />
 
-            {/* Bộ lọc đánh giá */}
-            <RatingFilter
-                title="Review Filter"
-                items={[3, 4, 5].map((star) => ({ label: `${star} stars or more`, value: star }))}
-                onChange={() => { }}
-            />
+            {/* Group: Sort */}
+            {/* <SortOptionsFilter
+                title="Sort By"
+                options={["Price Low to High", "Price High to Low", "Newest First"]}
+                selected={filters.sortBy}
+                onChange={(sortBy) => onChange({ sortBy })}
+            /> */}
 
-            {/* Bộ lọc vị trí */}
-            <LocationFilter
-                title="Location"
-                locations={cities}
-                onChange={() => { }}
-            />
-
-            {/* bộ lọc theo khoảng time */}
-            {/* ❌ BUG: Cannot read properties of undefined (reading 'checkIn')*/}
-            <DateRangeFilter
-                title="Check in / Check out"
-                checkInDate={filters.checkIn}
-                checkOutDate={filters.checkOut}
-                onDateChange={() => { }}
-            />
-
-            {/* Số lượng khách */}
-            <div className="mb-4">
-                <h3 className="font-medium text-sm md:text-lg mb-2">Số lượng khách</h3>
-                <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2">
-                        <label className="text-sm md:text-base text-gray-700">Người lớn:</label>
-                        <input
-                            type="number"
-                            min="1"
-                            className="w-20 p-2 border rounded-lg text-sm md:text-base"
-                            defaultValue="1"
-                        />
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <label className="text-sm md:text-base text-gray-700">Trẻ em:</label>
-                        <input
-                            type="number"
-                            min="0"
-                            className="w-20 p-2 border rounded-lg text-sm md:text-base"
-                            defaultValue="0"
-                        />
-                    </div>
-                </div>
-            </div>
-
-            {/* Price filter */}
-            <PriceRangeFilter
-                title="Price"
+            {/* Group: Price */}
+            {/* <PriceRangeFilter
+                title="Price Range"
                 items={[
                     { label: "$100 to $200", min: 100, max: 200 },
                     { label: "$200 to $300", min: 200, max: 300 },
                     { label: "$300 to $600", min: 300, max: 600 },
                 ]}
-                onChange={() => { }}
-            />
+                selected={filters.priceRanges}
+                onChange={(priceRanges) => onChange({ priceRanges })}
+            /> */}
+
+            {/* Group: Rating */}
+            {/* <RatingFilter
+                title="Minimum Rating"
+                items={[3, 4, 5].map((star) => ({ label: `${star} stars or more`, value: star }))}
+                selected={filters.minRating}
+                onChange={(minRating) => onChange({ minRating })}
+            /> */}
+
+            {/* Group: Location */}
+            {/* <LocationFilter
+                title="Location"
+                locations={cities}
+                selected={filters.location}
+                onChange={(location) => onChange({ location })}
+            /> */}
+
+            {/* Group: Date */}
+            {/* <DateRangeFilter
+                title="Check-in / Check-out"
+                checkInDate={filters.checkIn}
+                checkOutDate={filters.checkOut}
+                onDateChange={({ checkIn, checkOut }) =>
+                    onChange({ checkIn, checkOut })
+                }
+            /> */}
+
+            {/* Group: Guests */}
+            {/* <GuestFilter
+                title="Guests"
+                guest={filters.guests}
+                onChange={(guests) => onChange({ guests })}
+            /> */}
 
 
-            {/* Bộ lọc tiện ích */}
-            <div className="mb-4">
-                <h3 className="font-medium text-sm md:text-lg mb-2">Tiện ích</h3>
-                {["Wi-Fi", "Hồ bơi", "Bãi đỗ xe", "Gym"].map((amenity) => (
-                    <label
-                        key={amenity}
-                        className="flex items-center gap-2 mb-2 text-gray-700 text-sm md:text-base"
-                    >
-                        <input
-                            type="checkbox"
-                            className="accent-blue-500 h-4 w-4"
-                        />
-                        {amenity}
-                    </label>
-                ))}
-            </div>
 
+            {/* Group: Amenities */}
+            {/* <AmenitiyFilter
+                title="Amenities"
+                amenities={amenities}
+                selected={filters.amenities}
+                onChange={(amenities) => onChange({ amenities })}
+            /> */}
 
-
-
-            {/* Sort By */}
-            <div>
-                <h3 className="font-medium text-sm md:text-lg mb-2">Sort By</h3>
-                {["Price Low to High", "Price High to Low", "Newest First"].map((option) => (
-                    <label
-                        key={option}
-                        className="flex items-center gap-2 mb-2 text-gray-700 text-sm md:text-base"
-                    >
-                        <input
-                            type="radio"
-                            name="sort"
-                            value={option}
-                            className="accent-blue-500 h-4 w-4"
-                        />
-                        {option}
-                    </label>
-                ))}
-            </div>
-        </div>
-    </>)
+        </aside>
+    );
 }
