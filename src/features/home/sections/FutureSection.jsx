@@ -12,7 +12,7 @@ export default function FurtureSection() {
             {/* Title + Description */}
 
             <SectionHeader title="Featured Hotels" className="items-center text-center">
-                <p className="text-gray-600 text-sm md:text-base">
+                <p className="text-gray-600 text-sm md:text-base mb-5">
                     Discover our handpicked selection of exceptional properties around the world, offering unparalleled luxury and unforgettable experiences.
                 </p>
             </SectionHeader>

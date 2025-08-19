@@ -14,7 +14,7 @@ export default function BookingPage({ bookings }) {
           <thead className="bg-gray-100">
             <tr className="text-left text-gray-700 text-sm uppercase tracking-wider">
               <th className="py-3 px-4" scope="col">Hotels</th>
-              <th className="py-3 px-4" scope="col">Date & Guests</th>
+              <th className="py-3 px-4" scope="col">Booking Dates</th>
               <th className="py-3 px-4" scope="col">Payment</th>
             </tr>
           </thead>
