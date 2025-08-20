@@ -1,5 +1,5 @@
-// Hình ảnh khách sạn (bên trái = bên phải về width & height)
 import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function RoomGallery({ room }) {
   const images = room?.images || [];
@@ -13,29 +13,49 @@ export default function RoomGallery({ room }) {
     }
   }, [images, selectedIndexImg]);
 
-  // thumbnails dùng 4 ảnh (0..3). Nếu bạn muốn bỏ ảnh lớn khỏi thumbnails -> slice(1,5)
   const thumbnails = images.slice(0, 4);
 
+  // Animation variants for thumbnails
+
+  const thumbnailVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.1, duration: 0.3, ease: "easeOut" },
+    }),
+  };
+
   return (
-    <div className="bg-white p-4 m-5 shadow-md rounded-lg">
-      {/* Container: đặt một chiều cao cố định để 2 cột bằng nhau */}
+    <div className="p-4 m-5 shadow-md rounded-lg bg-white">
       <div className="flex gap-4 items-stretch h-96">
-        {/* Bên trái: width = 1/2, full height */}
+        {/* Main Image with Fade Animation */}
         <div className="w-1/2 h-full rounded overflow-hidden">
-          <img
-            src={images[selectedIndexImg] || "/placeholder.png"}
-            alt={`Hình ảnh phòng ${selectedIndexImg + 1}`}
-            className="w-full h-full object-cover"
-          />
+          <AnimatePresence>
+            <motion.img
+              key={selectedIndexImg}
+              src={images[selectedIndexImg] || "/placeholder.png"}
+              alt={`Hình ảnh phòng ${selectedIndexImg + 1}`}
+              className="w-full h-full object-cover"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          </AnimatePresence>
         </div>
 
-        {/* Bên phải: width = 1/2, grid 2x2, full height */}
+        {/* Thumbnail Grid with Staggered Animation */}
         <div className="w-1/2 h-full grid grid-cols-2 grid-rows-2 gap-2">
           {thumbnails.map((image, index) => {
             const isActive = selectedIndexImg === index;
             return (
-              <div
+              <motion.div
                 key={index}
+                custom={index}
+                variants={thumbnailVariants}
+                initial="hidden"
+                animate="visible"
                 role="button"
                 tabIndex={0}
                 onClick={() => setSelectedIndexImg(index)}
@@ -45,23 +65,27 @@ export default function RoomGallery({ room }) {
                     setSelectedIndexImg(index);
                   }
                 }}
-                className={`relative overflow-hidden rounded cursor-pointer border-2 transition-transform focus:outline-none ${
-                  isActive
-                    ? "border-blue-500 scale-[1.02]"
-                    : "border-transparent"
-                }`}
+                className={`relative overflow-hidden rounded cursor-pointer border-2 transition-transform focus:outline-none
+                  ${
+                    isActive
+                      ? "border-blue-500 scale-[1.02]"
+                      : "border-transparent"
+                  }
+                  hover:scale-[1.05] hover:border-blue-300
+                `}
               >
-                {/* mỗi ô lấy toàn chiều cao ô: dùng absolute + object-cover */}
-                <img
+                <motion.img
                   src={image}
                   alt={`Hình ảnh phòng ${index + 1}`}
                   className="absolute inset-0 w-full h-full object-cover"
+                  whileHover={{ scale: 1.1, opacity: 0.9 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
                 />
-              </div>
+              </motion.div>
             );
           })}
 
-          {/* Nếu thiếu ô để đủ 4 ô thì render ô trống giữ layout */}
+          {/* Empty placeholders to maintain layout */}
           {Array.from({ length: Math.max(0, 4 - thumbnails.length) }).map(
             (_, i) => (
               <div
