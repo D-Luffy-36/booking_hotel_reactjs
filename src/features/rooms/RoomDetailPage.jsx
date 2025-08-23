@@ -10,6 +10,7 @@ import RoomSummary from "./components/RoomSummary";
 import BookingForm from "./components/BookingForm";
 import LocationMap from "./components/LocationMap";
 import RoomAdvantages from "./components/RoomAdvantages";
+import LoadingSpinner from "../../conponents/ui/LoadingSpinner";
 import { hotelDummyData, roomCommonData } from "../../assets/assets";
 
 export default function RoomDetailPage({ rooms }) {
@@ -28,7 +29,11 @@ export default function RoomDetailPage({ rooms }) {
   };
 
   if (!room) {
-    return <div>Room not found!</div>; // nếu không có room
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    ); // nếu không có room
   }
 
   return (

@@ -2,10 +2,12 @@ import React from "react";
 import Navbar from "./conponents/layout/navbar/Navbar.jsx";
 import { Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "./features/home/HomePage.jsx";
-import BookingPage from "./features/booking/BookingPage.jsx";
+import BookingPage from "./features/admin/bookings/BookingPage.jsx";
 import RoomDetailPage from "./features/rooms/RoomDetailPage.jsx";
 import AllRooms from "./features/rooms/AllRooms.jsx";
-import Footer from "./conponents/layout/Footer.jsx";
+import DashboardPage from "./features/admin/dashboard/components/DashBoardPage.jsx";
+import UserLayout from "./conponents/layout/wrapper/UserLayout.jsx";
+import AdminLayout from "./conponents/layout/wrapper/AdminLayout.jsx";
 import { roomsDummyData, userBookingsDummyData } from "./assets/assets.js";
 
 const App = () => {
@@ -17,18 +19,25 @@ const App = () => {
       {!isOwnerPath && <Navbar />}
       <div className="min-h-[70-vh]">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/rooms" element={<AllRooms />} />
-          <Route
-            path="/room/:id"
-            element={<RoomDetailPage rooms={roomsDummyData} />}
-          />
-          <Route
-            path="/my-bookings"
-            element={<BookingPage bookings={userBookingsDummyData} />}
-          />
+          {/* USER AREA */}
+          <Route element={<UserLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/rooms" element={<AllRooms />} />
+            <Route
+              path="/room/:id"
+              element={<RoomDetailPage rooms={roomsDummyData} />}
+            />
+            <Route
+              path="/my-bookings"
+              element={<BookingPage bookings={userBookingsDummyData} />}
+            />
+          </Route>
+
+          {/* ADMIN AREA */}
+          <Route element={<AdminLayout />}>
+            <Route path="/owner" element={<DashboardPage />} />
+          </Route>
         </Routes>
-        <Footer />
       </div>
     </div>
   );

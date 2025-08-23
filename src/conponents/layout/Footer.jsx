@@ -7,7 +7,7 @@ export default function Footer() {
         {/* Logo + Mô tả */}
         <div>
           <div className="font-playfair text-3xl text-gray-800 mb-2">
-            QuickStay
+            Demo-Booking
           </div>
           <p>
             Discover the world’s most extraordinary places to stay, from

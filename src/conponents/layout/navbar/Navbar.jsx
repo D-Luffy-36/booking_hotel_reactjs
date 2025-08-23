@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../../../assets/assets.js";
-
 import BookIcon from "../../ui/BookIcon.jsx";
 import NavLink from "./NavLink.jsx";
+import UserActions from "./UserActions.jsx";
 
 const Navbar = () => {
   const navLinks = [
@@ -56,20 +56,6 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6 lg:gap-10">
           <NavLink navLinks={navLinks} isScrolled={isScrolled} />
-
-          <button
-            className={`border px-4 py-1 text-sm font-light rounded-full transition-colors 
-                        ${
-                          isScrolled
-                            ? "text-black border-black"
-                            : "text-white border-white"
-                        }`}
-            onClick={() => {
-              navigate("/owner");
-            }}
-          >
-            Dashboard
-          </button>
         </div>
 
         {/* Desktop Right */}
@@ -79,6 +65,7 @@ const Navbar = () => {
             alt="search"
             className={`${isScrolled && "invert"} h-7 transition-all`}
           />
+          <UserActions isScrolled={isScrolled} />
         </div>
 
         {/* Mobile Menu Button */}
