@@ -2,7 +2,7 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css"; // Bắt buộc import CSS để bản đồ hiển thị đúng
 import L from "leaflet";
-import LoadingSpinner from "../../../conponents/ui/LoadingSpinner";
+import LoadingSpinner from "../../../share/ui/LoadingSpinner";
 
 // ===== Fix lỗi marker mặc định của Leaflet =====
 // Leaflet trên Vite/React thường mất icon mặc định, phải set thủ công

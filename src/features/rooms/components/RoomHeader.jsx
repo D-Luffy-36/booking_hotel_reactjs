@@ -1,5 +1,5 @@
 import { assets } from "../../../assets/assets";
-import StarRating from "../../../conponents/ui/StarRating";
+import StarRating from "../../../share/ui/StarRating";
 
 export default function RoomHeader({ room }) {
   if (!room || !room.hotel) {

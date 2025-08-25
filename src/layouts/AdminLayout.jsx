@@ -1,13 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import PageWrapper from "../PageWrapper";
 
-export const UserLayout = () => {
+export const AdminLayout = () => {
   return (
     <>
+      {/* header */}
       <Outlet />
+      {/* footer */}
     </>
   );
 };
 
-export default UserLayout;
+export default AdminLayout;

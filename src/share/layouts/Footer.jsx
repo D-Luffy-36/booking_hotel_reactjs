@@ -2,19 +2,18 @@ import { assets } from "../../assets/assets";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-700 mt-12 p-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-gray-100 text-gray-700 p-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-12">
         {/* Logo + Mô tả */}
-        <div>
-          <div className="font-playfair text-3xl text-gray-800 mb-2">
+        <div className="lg:col-span-2">
+          <div className="font-playfair text-3xl text-gray-800 mb-3">
             Demo-Booking
           </div>
-          <p>
-            Discover the world’s most extraordinary places to stay, from
-            boutique hotels to luxury villas and private islands.
+          <p className="text-sm leading-relaxed">
+            Discover Vietnam’s most unique stays, from cozy boutique hotels and
+            beachside resorts to authentic homestays across the country.
           </p>
           <div className="flex gap-4 mt-4">
-            {/* Giả sử dùng icon SVG hoặc img */}
             <img
               src={assets.instagramIcon}
               alt="Instagram"
@@ -32,8 +31,8 @@ export default function Footer() {
 
         {/* Company */}
         <div>
-          <h4 className="font-semibold mb-2">COMPANY</h4>
-          <ul className="space-y-1">
+          <h4 className="font-semibold mb-3">COMPANY</h4>
+          <ul className="space-y-2 text-sm">
             <li>About</li>
             <li>Careers</li>
             <li>Press</li>
@@ -44,8 +43,8 @@ export default function Footer() {
 
         {/* Support */}
         <div>
-          <h4 className="font-semibold mb-2">SUPPORT</h4>
-          <ul className="space-y-1">
+          <h4 className="font-semibold mb-3">SUPPORT</h4>
+          <ul className="space-y-2 text-sm">
             <li>Help Center</li>
             <li>Safety Information</li>
             <li>Cancellation Options</li>
@@ -55,9 +54,9 @@ export default function Footer() {
         </div>
 
         {/* Stay Updated */}
-        <div>
-          <h4 className="font-semibold mb-2">STAY UPDATED</h4>
-          <p className="mb-2">
+        <div className="sm:col-span-2 lg:col-span-1">
+          <h4 className="font-semibold mb-3">STAY UPDATED</h4>
+          <p className="text-sm mb-3">
             Subscribe to our newsletter for travel inspiration and special
             offers.
           </p>
@@ -65,9 +64,9 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Your email"
-              className="px-2 py-1 border rounded-l-md outline-none"
+              className="flex-1 px-3 py-2 border rounded-l-md outline-none text-sm"
             />
-            <button className="bg-black text-white px-4 py-1 rounded-r-md">
+            <button className="bg-black text-white px-4 py-2 rounded-r-md">
               <img src={assets.arrowIcon} className="w-4 invert" />
             </button>
           </form>
